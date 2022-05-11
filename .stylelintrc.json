@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "stylelint-config-twbs-bootstrap",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "rule-empty-line-before": "always",
+    "string-quotes": "double"
+  }
+}

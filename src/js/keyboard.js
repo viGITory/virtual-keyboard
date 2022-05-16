@@ -4,6 +4,7 @@ import ru from './lang/ru';
 import Key from './key';
 
 let currentLang = en;
+let isShift = false;
 
 class Keyboard {
   constructor() {
@@ -18,9 +19,42 @@ class Keyboard {
     document.body.append(this.container);
   }
 
+  switchCase() {
+    this.keys.forEach((key, index) => {
+      if (isShift && currentLang[index].shift) {
+        key.textContent = currentLang[index].shift;
+      } else {
+        key.textContent = currentLang[index].small;
+      }
+    });
+  }
+
+  addListeners() {
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.altKey) {
+        if (currentLang === en) currentLang = ru;
+        else currentLang = en;
+      }
+
+      if (event.shiftKey || event.getModifierState('CapsLock')) {
+        isShift = true;
+
+        this.switchCase();
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (!event.shiftKey && !event.getModifierState('CapsLock')) {
+        isShift = false;
+
+        this.switchCase();
+      }
+    });
+  }
 
   init() {
     this.render();
+    this.addListeners();
   }
 }
 

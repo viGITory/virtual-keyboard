@@ -5,7 +5,10 @@ export default class Key {
     this.container.setAttribute('type', 'button');
   }
 
-  render() {
+  render(currentLang) {
+    this.container.setAttribute('data-key', `${currentLang.code}`);
+    this.container.textContent = currentLang.small;
+
     return this.container;
   }
 }

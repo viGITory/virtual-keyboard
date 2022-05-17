@@ -6,8 +6,16 @@ export default class Key {
   }
 
   render(currentLang) {
+    if (currentLang.code === 'CapsLock') {
+      this.indicator = document.createElement('span');
+      this.indicator.classList.add('keyboard__indicator');
+
+      this.container.append(this.indicator, currentLang.small);
+    } else {
+      this.container.textContent = currentLang.small;
+    }
+
     this.container.setAttribute('data-key', `${currentLang.code}`);
-    this.container.textContent = currentLang.small;
 
     return this.container;
   }

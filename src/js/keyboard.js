@@ -32,11 +32,15 @@ class Keyboard {
   }
 
   switchCase() {
-    this.keys.forEach((key, index) => {
-      if (isShift && currentLang[index].shift) {
-        key.textContent = currentLang[index].shift;
-      } else {
-        key.textContent = currentLang[index].small;
+    this.keys.forEach((item, index) => {
+      const key = item;
+
+      if (currentLang[index].shift) {
+        if (isShift) {
+          key.textContent = currentLang[index].shift;
+        } else {
+          key.textContent = currentLang[index].small;
+        }
       }
     });
   }

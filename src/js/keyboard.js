@@ -3,7 +3,7 @@ import ru from './lang/ru';
 
 import Key from './key';
 
-let currentLang = en;
+let currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
 let isShift = false;
 
 class Keyboard {
@@ -42,6 +42,10 @@ class Keyboard {
   }
 
   addListeners() {
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('vigitory-lang', JSON.stringify(currentLang));
+    });
+
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.altKey) {
         if (currentLang === en) currentLang = ru;

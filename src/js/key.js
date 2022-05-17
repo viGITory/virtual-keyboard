@@ -6,6 +6,10 @@ export default class Key {
   }
 
   render(currentLang) {
+    if (!currentLang.shift && !currentLang.code.match('Arrow|Space')) {
+      this.container.classList.add('keyboard__key--fn');
+    }
+
     if (currentLang.code === 'CapsLock') {
       this.indicator = document.createElement('span');
       this.indicator.classList.add('keyboard__indicator');

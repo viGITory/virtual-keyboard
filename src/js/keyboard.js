@@ -15,7 +15,19 @@ class Keyboard {
   render() {
     this.keys = currentLang.map((item) => new Key().render(item));
 
-    this.container.append(...this.keys);
+    for (let i = 0; i < 5; i += 1) {
+      const row = document.createElement('div');
+      row.classList.add('keyboard__row');
+
+      if (i === 0) row.append(...this.keys.slice(0, 14));
+      else if (i === 1) row.append(...this.keys.slice(14, 28));
+      else if (i === 2) row.append(...this.keys.slice(28, 41));
+      else if (i === 3) row.append(...this.keys.slice(41, 54));
+      else row.append(...this.keys.slice(54));
+
+      this.container.append(row);
+    }
+
     document.body.append(this.container);
   }
 

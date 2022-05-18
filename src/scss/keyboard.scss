@@ -28,7 +28,7 @@
     padding: 1rem;
 
     font-family: inherit;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: inherit;
     color: inherit;
 
@@ -38,7 +38,7 @@
     border-radius: 0.8rem;
     outline: none;
 
-    transition: border-color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
 
     &[data-key="Backspace"],
     &[data-key="ShiftRight"],
@@ -108,6 +108,7 @@
 
     &:hover,
     &:focus {
+      color: var(--color-dark-s);
       border-color: transparent;
 
       svg {

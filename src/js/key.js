@@ -3,6 +3,8 @@ export default class Key {
     this.container = document.createElement('button');
     this.container.classList.add('keyboard__key');
     this.container.setAttribute('type', 'button');
+
+    this.addListeners();
   }
 
   render(currentLang) {
@@ -22,5 +24,37 @@ export default class Key {
     this.container.setAttribute('data-key', `${currentLang.code}`);
 
     return this.container;
+  }
+
+  addListeners() {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === this.container.dataset.key) {
+        this.container.classList.add('keyboard__key--active');
+      }
+
+      if (
+        this.indicator &&
+        (event.getModifierState('CapsLock') || event.shiftKey)
+      ) {
+        this.indicator.classList.add('keyboard__indicator--active');
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (
+        event.code === this.container.dataset.key &&
+        event.code !== 'CapsLock'
+      ) {
+        this.container.classList.remove('keyboard__key--active');
+      }
+
+      if (
+        this.indicator &&
+        !(event.getModifierState('CapsLock') || event.shiftKey)
+      ) {
+        this.indicator.classList.remove('keyboard__indicator--active');
+        this.container.classList.remove('keyboard__key--active');
+      }
+    });
   }
 }

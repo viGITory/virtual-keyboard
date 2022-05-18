@@ -119,6 +119,15 @@
       align-items: flex-end;
       font-size: 1.6rem;
     }
+
+    &--active {
+      color: var(--color-dark-s);
+      border-color: transparent;
+
+      svg {
+        fill: var(--color-dark-s);
+      }
+    }
   }
 
   &__indicator {
@@ -129,5 +138,9 @@
     border-radius: 50%;
 
     transition: background-color 0.2s;
+
+    &--active {
+      background-color: var(--color-bright);
+    }
   }
 }

@@ -260,7 +260,7 @@ export default [
     code: 'Slash',
   },
   {
-    small: '↑',
+    small: '▲',
     shift: null,
     code: 'ArrowUp',
   },
@@ -275,7 +275,8 @@ export default [
     code: 'ControlLeft',
   },
   {
-    small: 'win',
+    small:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" xmlns:xml="http://www.w3.org/XML/1998/namespace" xml:space="preserve"><g clip-rule="evenodd"><path fill="none" d="M 0 0 h 128 v 128 H 0 Z" /><path fill-rule="evenodd" d="M 128 67.591 L 127.984 128 l -69.358 -9.759 l -0.097 -50.763 l 69.471 0.113 Z m -69.374 -57.5 L 127.984 0 v 60.682 l -69.358 0.549 v -51.14 Z m -6.341 57.027 l 0.041 50.346 l -52.284 -7.166 l -0.004 -43.517 l 52.247 0.337 Z M 0 18.123 l 52.31 -7.102 l 0.023 50.301 l -52.284 0.296 L 0 18.123 Z" /></g></svg>',
     shift: null,
     code: 'MetaLeft',
   },
@@ -300,17 +301,17 @@ export default [
     code: 'ControlRight',
   },
   {
-    small: '←',
+    small: '◄',
     shift: null,
     code: 'ArrowLeft',
   },
   {
-    small: '↓',
+    small: '▼',
     shift: null,
     code: 'ArrowDown',
   },
   {
-    small: '→',
+    small: '►',
     shift: null,
     code: 'ArrowRight',
   },

@@ -16,7 +16,7 @@ export default class Key {
 
       this.container.append(this.indicator, currentLang.small);
     } else {
-      this.container.textContent = currentLang.small;
+      this.container.innerHTML = currentLang.small;
     }
 
     this.container.setAttribute('data-key', `${currentLang.code}`);

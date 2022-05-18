@@ -87,9 +87,32 @@
       justify-content: flex-end;
     }
 
+    &[data-key="ArrowUp"],
+    &[data-key="ArrowLeft"],
+    &[data-key="ArrowDown"],
+    &[data-key="ArrowRight"] {
+      font-size: 1.6rem;
+    }
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      pointer-events: none;
+      fill: var(--color-light-l);
+
+      path {
+        transition: fill 0.2s;
+      }
+    }
+
     &:hover,
     &:focus {
       border-color: transparent;
+
+      svg {
+        fill: var(--color-dark-s);
+      }
     }
 
     &--fn {

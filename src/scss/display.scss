@@ -1,0 +1,32 @@
+.display {
+  display: block;
+  width: 98.2rem;
+  height: 33.2rem;
+  padding: 1.1rem;
+  margin: 0 auto;
+  margin-bottom: 0.6rem;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--color-dark-s);
+
+  resize: none;
+  background-color: var(--color-light-s);
+  border: 0.5rem solid var(--color-light-m);
+  border-radius: 1rem;
+  outline: none;
+  box-shadow: 0 0 0 0.1rem var(--color-light-l);
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-l);
+  }
+}

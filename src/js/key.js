@@ -1,3 +1,5 @@
+import display from './display';
+
 export default class Key {
   constructor() {
     this.container = document.createElement('button');
@@ -26,8 +28,25 @@ export default class Key {
     return this.container;
   }
 
+  printText(event) {
+    const keyCode = event.code || event.target.dataset.key;
+
+    if (
+      keyCode === this.container.dataset.key &&
+      !this.container.textContent.match(
+        'backspace|tab|capsLock|enter|shift|ctrl|alt|win|del'
+      )
+    ) {
+      display.textContent += this.container.textContent;
+    }
+  }
+
   addListeners() {
     document.addEventListener('keydown', (event) => {
+      display.focus();
+      event.preventDefault();
+      this.printText(event);
+
       if (event.code === this.container.dataset.key) {
         this.container.classList.add('keyboard__key--active');
       }
@@ -55,6 +74,10 @@ export default class Key {
         this.indicator.classList.remove('keyboard__indicator--active');
         this.container.classList.remove('keyboard__key--active');
       }
+    });
+
+    document.addEventListener('click', (event) => {
+      this.printText(event);
     });
   }
 }

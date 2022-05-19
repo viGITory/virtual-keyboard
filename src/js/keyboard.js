@@ -1,6 +1,7 @@
 import en from './lang/en';
 import ru from './lang/ru';
 
+import display from './display';
 import Key from './key';
 
 let currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
@@ -28,7 +29,8 @@ class Keyboard {
       this.container.append(row);
     }
 
-    document.body.append(this.container);
+    document.body.append(display, this.container);
+    display.focus();
   }
 
   switchCase() {

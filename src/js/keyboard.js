@@ -4,7 +4,6 @@ import ru from './lang/ru';
 import display from './display';
 import Key from './key';
 
-let currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
 let isShift = false;
 
 class Keyboard {
@@ -14,7 +13,7 @@ class Keyboard {
   }
 
   render() {
-    this.keys = currentLang.map((item) => new Key().render(item));
+    this.keys = this.currentLang.map((item) => new Key().render(item));
 
     for (let i = 0; i < 5; i += 1) {
       const row = document.createElement('div');
@@ -37,11 +36,11 @@ class Keyboard {
     this.keys.forEach((item, index) => {
       const key = item;
 
-      if (currentLang[index].shift) {
+      if (this.currentLang[index].shift) {
         if (isShift) {
-          key.textContent = currentLang[index].shift;
+          key.textContent = this.currentLang[index].shift;
         } else {
-          key.textContent = currentLang[index].small;
+          key.textContent = this.currentLang[index].small;
         }
       }
     });
@@ -49,13 +48,13 @@ class Keyboard {
 
   addListeners() {
     window.addEventListener('beforeunload', () => {
-      localStorage.setItem('vigitory-lang', JSON.stringify(currentLang));
+      localStorage.setItem('vigitory-lang', JSON.stringify(this.currentLang));
     });
 
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.altKey) {
-        if (currentLang === en) currentLang = ru;
-        else currentLang = en;
+        if (this.currentLang === en) this.currentLang = ru;
+        else this.currentLang = en;
       }
 
       if (event.shiftKey || event.getModifierState('CapsLock')) {
@@ -75,6 +74,8 @@ class Keyboard {
   }
 
   init() {
+    this.currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
+
     this.render();
     this.addListeners();
   }

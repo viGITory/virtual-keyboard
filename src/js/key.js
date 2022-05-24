@@ -42,6 +42,16 @@ export default class Key {
     }
   }
 
+  switchCase(data) {
+    if (data.shift) {
+      if (this.isShift) {
+        this.container.textContent = data.shift;
+      } else {
+        this.container.textContent = data.small;
+      }
+    }
+  }
+
   addListeners() {
     document.addEventListener('keydown', (event) => {
       display.focus();

@@ -38,16 +38,8 @@ class Keyboard {
   }
 
   switchCase() {
-    this.keys.forEach((item, index) => {
-      const key = item;
-
-      if (this.currentLang[index].shift) {
-        if (isShift) {
-          key.textContent = this.currentLang[index].shift;
-        } else {
-          key.textContent = this.currentLang[index].small;
-        }
-      }
+    this.currentLang.forEach((data, index) => {
+      this.keys[index].switchCase(data);
     });
   }
 

@@ -5,6 +5,7 @@ export default class Key {
     this.container = document.createElement('button');
     this.container.classList.add('keyboard__key');
     this.container.setAttribute('type', 'button');
+    this.isShift = false;
 
     this.addListeners();
   }
@@ -51,11 +52,11 @@ export default class Key {
         this.container.classList.add('keyboard__key--active');
       }
 
-      if (
-        this.indicator &&
-        (event.getModifierState('CapsLock') || event.shiftKey)
-      ) {
-        this.indicator.classList.add('keyboard__indicator--active');
+      if (event.getModifierState('CapsLock') || event.shiftKey) {
+        this.isShift = true;
+
+        if (this.indicator)
+          this.indicator.classList.add('keyboard__indicator--active');
       }
     });
 
@@ -67,12 +68,13 @@ export default class Key {
         this.container.classList.remove('keyboard__key--active');
       }
 
-      if (
-        this.indicator &&
-        !(event.getModifierState('CapsLock') || event.shiftKey)
-      ) {
-        this.indicator.classList.remove('keyboard__indicator--active');
-        this.container.classList.remove('keyboard__key--active');
+      if (!(event.getModifierState('CapsLock') || event.shiftKey)) {
+        this.isShift = false;
+
+        if (this.indicator) {
+          this.indicator.classList.remove('keyboard__indicator--active');
+          this.container.classList.remove('keyboard__key--active');
+        }
       }
     });
 

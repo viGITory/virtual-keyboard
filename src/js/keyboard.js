@@ -4,8 +4,6 @@ import ru from './lang/ru';
 import display from './display';
 import Key from './key';
 
-let isShift = false;
-
 class Keyboard {
   constructor() {
     this.container = document.createElement('div');
@@ -58,16 +56,12 @@ class Keyboard {
       }
 
       if (event.shiftKey || event.getModifierState('CapsLock')) {
-        isShift = true;
-
         this.switchCase();
       }
     });
 
     document.addEventListener('keyup', (event) => {
       if (!event.shiftKey && !event.getModifierState('CapsLock')) {
-        isShift = false;
-
         this.switchCase();
       }
     });

@@ -11,17 +11,24 @@ class Keyboard {
   }
 
   render() {
-    this.keys = this.currentLang.map((item) => new Key().render(item));
+    const buttons = [];
+
+    this.keys = this.currentLang.map((item) => {
+      const key = new Key();
+      buttons.push(key.render(item));
+
+      return key;
+    });
 
     for (let i = 0; i < 5; i += 1) {
       const row = document.createElement('div');
       row.classList.add('keyboard__row');
 
-      if (i === 0) row.append(...this.keys.slice(0, 14));
-      else if (i === 1) row.append(...this.keys.slice(14, 28));
-      else if (i === 2) row.append(...this.keys.slice(28, 41));
-      else if (i === 3) row.append(...this.keys.slice(41, 54));
-      else row.append(...this.keys.slice(54));
+      if (i === 0) row.append(...buttons.slice(0, 14));
+      else if (i === 1) row.append(...buttons.slice(14, 28));
+      else if (i === 2) row.append(...buttons.slice(28, 41));
+      else if (i === 3) row.append(...buttons.slice(41, 54));
+      else row.append(...buttons.slice(54));
 
       this.container.append(row);
     }

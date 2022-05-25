@@ -9,5 +9,5 @@ class Display {
   }
 }
 
-const display = new Display().render();
+const display = new Display();
 export default display;

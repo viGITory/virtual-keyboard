@@ -29,8 +29,8 @@ export default class Key {
     return this.container;
   }
 
-  printText(event) {
-    const keyCode = event.code || event.target.dataset.key;
+  print(event) {
+    const keyCode = event ? event.code : this.container.dataset.key;
 
     if (
       keyCode === this.container.dataset.key &&
@@ -44,19 +44,14 @@ export default class Key {
 
   switchCase(data) {
     if (data.shift) {
-      if (this.isShift) {
-        this.container.textContent = data.shift;
-      } else {
-        this.container.textContent = data.small;
-      }
+      this.container.textContent = this.isShift ? data.shift : data.small;
     }
   }
 
   addListeners() {
     document.addEventListener('keydown', (event) => {
-      display.focus();
       event.preventDefault();
-      this.printText(event);
+      this.print(event);
 
       if (event.code === this.container.dataset.key) {
         this.container.classList.add('keyboard__key--active');
@@ -88,8 +83,8 @@ export default class Key {
       }
     });
 
-    document.addEventListener('click', (event) => {
-      this.printText(event);
+    this.container.addEventListener('click', () => {
+      this.print();
     });
   }
 }

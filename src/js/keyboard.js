@@ -33,8 +33,7 @@ class Keyboard {
       this.container.append(row);
     }
 
-    document.body.append(display, this.container);
-    display.focus();
+    document.body.append(display.render(), this.container);
   }
 
   switchCase() {
@@ -50,8 +49,7 @@ class Keyboard {
 
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.altKey) {
-        if (this.currentLang === en) this.currentLang = ru;
-        else this.currentLang = en;
+        this.currentLang = this.currentLang === en ? ru : en;
       }
 
       if (event.shiftKey || event.getModifierState('CapsLock')) {

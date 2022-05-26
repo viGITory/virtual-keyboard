@@ -31,14 +31,17 @@ export default class Key {
 
   print(event) {
     const keyCode = event ? event.code : this.container.dataset.key;
+    let value = this.container.textContent;
 
     if (
       keyCode === this.container.dataset.key &&
-      !this.container.textContent.match(
-        'backspace|tab|capsLock|enter|shift|ctrl|alt|win|del'
-      )
+      !this.container.textContent.match('capsLock|shift|ctrl|alt')
     ) {
-      display.textContent += this.container.textContent;
+      if (this.container.dataset.key === 'Enter') value = '\n';
+      if (this.container.dataset.key === 'Tab') value = '\t';
+      if (this.container.dataset.key === 'Space') value = ' ';
+
+      display.print(value);
     }
   }
 

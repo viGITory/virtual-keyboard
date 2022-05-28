@@ -1,11 +1,18 @@
 .keyboard {
   width: max-content;
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 0 auto;
 
-  background-color: var(--color-light-m);
-  border: 0.1rem solid var(--color-light-l);
-  border-radius: 1rem;
+  background-image: linear-gradient(
+    to bottom,
+    #4d4e53,
+    #5a5b5f,
+    #616267,
+    #68696d,
+    #65666a,
+    #505154
+  );
+  border-radius: 0.7rem;
 
   &__row,
   &__key {
@@ -31,103 +38,146 @@
     font-size: 2rem;
     font-weight: inherit;
     color: inherit;
+    letter-spacing: inherit;
 
     cursor: pointer;
-    background-color: var(--color-light-s);
-    border: 0.1rem solid var(--color-light-l);
-    border-radius: 0.8rem;
+    background-image: linear-gradient(to bottom, #2f3034, #1d1e22, #191a1c);
+    border: 0.1rem solid #030305;
+    border-radius: 0.5rem;
     outline: none;
+    box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325;
 
-    transition: color 0.2s, border-color 0.2s;
-
-    &[data-key="Backspace"],
-    &[data-key="ShiftRight"],
-    &[data-key="ShiftLeft"] {
-      width: 12.5rem;
-    }
-
-    &[data-key="Tab"] {
-      width: 8.5rem;
-    }
-
-    &[data-key="Backslash"] {
-      width: 10rem;
-    }
-
-    &[data-key="CapsLock"] {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 10.5rem;
-    }
-
-    &[data-key="ControlLeft"],
-    &[data-key="ControlRight"] {
-      width: 7rem;
-    }
-
-    &[data-key="Enter"] {
-      width: 14.5rem;
-    }
-
-    &[data-key="Space"] {
-      flex-grow: 1;
-    }
-
-    &[data-key="Tab"],
-    &[data-key="ShiftLeft"],
-    &[data-key="ControlLeft"] {
-      justify-content: flex-start;
-    }
-
-    &[data-key="Backspace"],
-    &[data-key="Enter"],
-    &[data-key="ShiftRight"],
-    &[data-key="ControlRight"] {
-      justify-content: flex-end;
-    }
-
-    &[data-key="ArrowUp"],
-    &[data-key="ArrowLeft"],
-    &[data-key="ArrowDown"],
-    &[data-key="ArrowRight"] {
-      font-size: 1.6rem;
-    }
+    transition-duration: 0.1s;
+    transition-property: text-shadow, border-color, box-shadow;
 
     svg {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.4rem;
+      height: 1.4rem;
 
       pointer-events: none;
-      fill: var(--color-light-l);
+      fill: #d8d9dd;
 
       path {
         transition: fill 0.2s;
       }
     }
 
-    &:hover,
-    &:focus {
-      color: var(--color-dark-s);
-      border-color: transparent;
-
-      svg {
-        fill: var(--color-dark-s);
-      }
+    &::selection {
+      background-color: transparent;
     }
 
-    &--fn {
+    &--Backquote,
+    &--Backspace {
+      background-image: linear-gradient(to bottom, #1e1f22, #1a1b1f, #161719);
+      box-shadow: inset 0 0.1rem 0 0 #262729, inset 0 -0.1rem 0 0 #202123;
+    }
+
+    &--Tab,
+    &--Backslash {
+      background-image: linear-gradient(to bottom, #1a1b1d, #1a1b1f, #15161a);
+      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #1f2020;
+    }
+
+    &--CapsLock,
+    &--Enter {
+      background-image: linear-gradient(to bottom, #1d1e22, #1a1b1f, #15161a);
+      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #212226;
+    }
+
+    &--ShiftLeft,
+    &--ShiftRight {
+      background-image: linear-gradient(to bottom, #1a1b1d, #191a1e, #141517);
+      box-shadow: inset 0 0.1rem 0 0 #232424, inset 0 -0.1rem 0 0 #1c1d1f;
+    }
+
+    &--ControlLeft,
+    &--MetaLeft,
+    &--AltLeft,
+    &--Space,
+    &--AltRight,
+    &--ControlRight,
+    &--ArrowLeft,
+    &--ArrowDown,
+    &--ArrowRight,
+    &--Delete {
+      background-image: linear-gradient(to bottom, #17181a, #151618, #0f1012);
+      box-shadow: inset 0 0.1rem 0 0 #252628, inset 0 -0.1rem 0 0 #1a1c1b;
+    }
+
+    &--Backspace,
+    &--ShiftRight,
+    &--ShiftLeft {
+      width: 12.5rem;
+    }
+
+    &--Tab {
+      width: 8.5rem;
+    }
+
+    &--Backslash {
+      width: 10rem;
+    }
+
+    &--CapsLock {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 10.5rem;
+    }
+
+    &--ControlLeft,
+    &--ControlRight {
+      width: 7rem;
+    }
+
+    &--Enter {
+      width: 14.5rem;
+    }
+
+    &--Space {
+      flex-grow: 1;
+    }
+
+    &--Tab,
+    &--ShiftLeft,
+    &--ControlLeft {
+      justify-content: flex-start;
+    }
+
+    &--Backspace,
+    &--Enter,
+    &--ShiftRight,
+    &--ControlRight {
+      justify-content: flex-end;
+    }
+
+    &--CapsLock,
+    &--ArrowUp,
+    &--ArrowLeft,
+    &--ArrowDown,
+    &--ArrowRight {
+      font-size: 1.4rem;
+    }
+
+    &--Tab,
+    &--Backspace,
+    &--Enter,
+    &--ShiftLeft,
+    &--ShiftRight,
+    &--ControlLeft,
+    &--MetaLeft,
+    &--AltLeft,
+    &--AltRight,
+    &--ControlRight,
+    &--Delete {
       align-items: flex-end;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
 
     &--active {
-      color: var(--color-dark-s);
-      border-color: transparent;
-
-      svg {
-        fill: var(--color-dark-s);
-      }
+      text-shadow: 0 0 0.5rem #d8d9dd;
+      border-color: #d8d9dd;
+      box-shadow: 0 0 0.5rem #d8d9dd;
     }
   }
 
@@ -135,13 +185,13 @@
     width: 0.5rem;
     height: 0.5rem;
 
-    background-color: var(--color-light-l);
+    background-color: #d8d9dd;
     border-radius: 50%;
 
-    transition: background-color 0.2s;
+    transition: background-color 0.1s;
 
     &--active {
-      background-color: var(--color-bright);
+      background-color: #00e676;
     }
   }
 }

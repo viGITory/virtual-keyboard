@@ -27,12 +27,26 @@
     }
   }
 
+  &__key,
+  &__description {
+    padding: 1rem;
+    background-image: linear-gradient(to bottom, #2f3034, #1d1e22, #191a1c);
+
+    border: 0.1rem solid #030305;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325;
+  }
+
+  &__description {
+    flex-grow: 1;
+    text-shadow: 0 0 0.5rem #d8d9dd;
+  }
+
   &__key {
     align-items: center;
     justify-content: center;
     width: 6rem;
     height: 6rem;
-    padding: 1rem;
 
     font-family: inherit;
     font-size: 2rem;
@@ -41,11 +55,7 @@
     letter-spacing: inherit;
 
     cursor: pointer;
-    background-image: linear-gradient(to bottom, #2f3034, #1d1e22, #191a1c);
-    border: 0.1rem solid #030305;
-    border-radius: 0.5rem;
     outline: none;
-    box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325;
 
     transition-duration: 0.1s;
     transition-property: text-shadow, border-color, box-shadow;
@@ -64,6 +74,28 @@
 
     &::selection {
       background-color: transparent;
+    }
+
+    &--lang,
+    &--empty {
+      background-image: linear-gradient(to bottom, #1b1c1e, #1a1b1f, #15161a);
+    }
+
+    &--lang {
+      height: max-content;
+
+      font-size: 1.4rem;
+      text-shadow: 0 0 0.5rem #d8d9dd;
+
+      border-color: #d8d9dd;
+      box-shadow: 0 0 0.5rem #d8d9dd;
+    }
+
+    &--empty {
+      height: auto;
+
+      cursor: auto;
+      box-shadow: inset 0 0.1rem 0 0 #222325, inset 0 -0.1rem 0 0 #202123;
     }
 
     &--Backquote,

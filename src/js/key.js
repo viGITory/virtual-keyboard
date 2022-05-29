@@ -22,7 +22,7 @@ export default class Key {
       this.container.innerHTML = this.lang.small;
     }
 
-    this.container.setAttribute('data-key', `${this.lang.code}`);
+    this.container.setAttribute('data-keycode', `${this.lang.code}`);
     this.container.classList.add(`keyboard__key--${this.lang.code}`);
 
     return this.container;
@@ -85,7 +85,7 @@ export default class Key {
     document.addEventListener('click', (event) => {
       const { target } = event;
 
-      if (target.dataset.key === 'CapsLock') {
+      if (target.dataset.keycode === 'CapsLock') {
         this.isShift = !this.isShift;
 
         if (this.indicator) {
@@ -94,7 +94,7 @@ export default class Key {
         }
       }
 
-      if (target.dataset.key === this.lang.code) this.print();
+      if (target.dataset.keycode === this.lang.code) this.print();
     });
 
     this.container.addEventListener('mousedown', () => {

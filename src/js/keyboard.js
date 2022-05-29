@@ -93,7 +93,7 @@ class Keyboard {
     });
 
     document.addEventListener('click', (event) => {
-      if (event.target.dataset.key === 'CapsLock') {
+      if (event.target.dataset.keycode === 'CapsLock') {
         this.switchCase();
       }
     });

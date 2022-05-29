@@ -17,26 +17,26 @@ class Keyboard {
   }
 
   createTopRow() {
-    this.activeLang = document.createElement('button');
+    this.langButton = document.createElement('button');
     const row = document.createElement('div');
     const description = document.createElement('p');
     const emptyButton = document.createElement('button');
 
-    this.activeLang.textContent =
+    this.langButton.textContent =
       localStorage.getItem('vigitory-lang') === JSON.stringify(en)
         ? 'en'
         : 'ru';
     description.textContent = 'Press Ctrl + Alt to switch language';
 
-    this.activeLang.classList.add('keyboard__key', 'keyboard__key--lang');
+    this.langButton.classList.add('keyboard__key', 'keyboard__key--lang');
     row.classList.add('keyboard__bar');
     description.classList.add('keyboard__description');
     emptyButton.classList.add('keyboard__key', 'keyboard__key--empty');
 
-    this.activeLang.setAttribute('type', 'button');
+    this.langButton.setAttribute('type', 'button');
     emptyButton.setAttribute('type', 'button');
 
-    return [this.activeLang, description, emptyButton];
+    return [this.langButton, description, emptyButton];
   }
 
   createRows() {
@@ -65,7 +65,6 @@ class Keyboard {
   }
 
   switchCase() {
-    this.activeLang.textContent = this.currentLang === en ? 'en' : 'ru';
     this.currentLang.forEach((data, index) => {
       this.keys[index].switchCase(data);
     });
@@ -79,6 +78,7 @@ class Keyboard {
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.altKey) {
         this.currentLang = this.currentLang === en ? ru : en;
+        this.langButton.textContent = this.currentLang === en ? 'en' : 'ru';
       }
 
       if (event.shiftKey || event.getModifierState('CapsLock')) {
@@ -98,9 +98,9 @@ class Keyboard {
       }
     });
 
-    this.activeLang.addEventListener('click', () => {
+    this.langButton.addEventListener('click', () => {
       this.currentLang = this.currentLang === en ? ru : en;
-      this.activeLang.textContent = this.currentLang === en ? 'en' : 'ru';
+      this.langButton.textContent = this.currentLang === en ? 'en' : 'ru';
 
       this.switchCase();
     });

@@ -140,7 +140,7 @@ export default [
     code: 'Backslash',
   },
   {
-    small: 'capsLock',
+    small: 'caps lock',
     shift: null,
     code: 'CapsLock',
   },

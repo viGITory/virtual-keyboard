@@ -34,7 +34,7 @@ export default class Key {
 
     if (
       keyCode === this.lang.code &&
-      !this.container.textContent.match('capsLock|shift|ctrl|alt')
+      !this.container.textContent.match('caps lock|shift|ctrl|alt')
     ) {
       if (this.lang.code === 'Enter') value = '\n';
       if (this.lang.code === 'Tab') value = '\t';

@@ -43,8 +43,8 @@ class Keyboard {
     const buttons = [];
 
     this.keys = this.currentLang.map((item) => {
-      const key = new Key();
-      buttons.push(key.render(item));
+      const key = new Key(item);
+      buttons.push(key.render());
 
       return key;
     });

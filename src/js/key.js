@@ -1,42 +1,44 @@
 import display from './display';
 
 export default class Key {
-  constructor() {
+  constructor(lang) {
     this.container = document.createElement('button');
     this.container.classList.add('keyboard__key');
     this.container.setAttribute('type', 'button');
+
+    this.lang = lang;
     this.isShift = false;
 
     this.addListeners();
   }
 
-  render(currentLang) {
-    if (currentLang.code === 'CapsLock') {
+  render() {
+    if (this.lang.code === 'CapsLock') {
       this.indicator = document.createElement('span');
       this.indicator.classList.add('keyboard__indicator');
 
-      this.container.append(this.indicator, currentLang.small);
+      this.container.append(this.indicator, this.lang.small);
     } else {
-      this.container.innerHTML = currentLang.small;
+      this.container.innerHTML = this.lang.small;
     }
 
-    this.container.setAttribute('data-key', `${currentLang.code}`);
-    this.container.classList.add(`keyboard__key--${currentLang.code}`);
+    this.container.setAttribute('data-key', `${this.lang.code}`);
+    this.container.classList.add(`keyboard__key--${this.lang.code}`);
 
     return this.container;
   }
 
   print(event) {
-    const keyCode = event ? event.code : this.container.dataset.key;
+    const keyCode = event ? event.code : this.lang.code;
     let value = this.container.textContent;
 
     if (
-      keyCode === this.container.dataset.key &&
+      keyCode === this.lang.code &&
       !this.container.textContent.match('capsLock|shift|ctrl|alt')
     ) {
-      if (this.container.dataset.key === 'Enter') value = '\n';
-      if (this.container.dataset.key === 'Tab') value = '\t';
-      if (this.container.dataset.key === 'Space') value = ' ';
+      if (this.lang.code === 'Enter') value = '\n';
+      if (this.lang.code === 'Tab') value = '\t';
+      if (this.lang.code === 'Space') value = ' ';
 
       display.print(value);
     }
@@ -53,7 +55,7 @@ export default class Key {
       event.preventDefault();
       this.print(event);
 
-      if (event.code === this.container.dataset.key) {
+      if (event.code === this.lang.code) {
         this.container.classList.add('keyboard__key--active');
       }
 
@@ -66,10 +68,7 @@ export default class Key {
     });
 
     document.addEventListener('keyup', (event) => {
-      if (
-        event.code === this.container.dataset.key &&
-        event.code !== 'CapsLock'
-      ) {
+      if (event.code === this.lang.code && event.code !== 'CapsLock') {
         this.container.classList.remove('keyboard__key--active');
       }
 

@@ -96,5 +96,15 @@ export default class Key {
 
       if (target.dataset.key === this.lang.code) this.print();
     });
+
+    this.container.addEventListener('mousedown', () => {
+      if (this.lang.code !== 'CapsLock')
+        this.container.classList.add('keyboard__key--active');
+    });
+
+    this.container.addEventListener('mouseup', () => {
+      if (this.lang.code !== 'CapsLock')
+        this.container.classList.remove('keyboard__key--active');
+    });
   }
 }

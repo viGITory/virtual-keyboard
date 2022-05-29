@@ -82,8 +82,19 @@ export default class Key {
       }
     });
 
-    this.container.addEventListener('click', () => {
-      this.print();
+    document.addEventListener('click', (event) => {
+      const { target } = event;
+
+      if (target.dataset.key === 'CapsLock') {
+        this.isShift = !this.isShift;
+
+        if (this.indicator) {
+          target.classList.toggle('keyboard__key--active');
+          this.indicator.classList.toggle('keyboard__indicator--active');
+        }
+      }
+
+      if (target.dataset.key === this.lang.code) this.print();
     });
   }
 }

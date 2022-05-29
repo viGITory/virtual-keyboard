@@ -92,6 +92,12 @@ class Keyboard {
       }
     });
 
+    document.addEventListener('click', (event) => {
+      if (event.target.dataset.key === 'CapsLock') {
+        this.switchCase();
+      }
+    });
+
     this.activeLang.addEventListener('click', () => {
       this.currentLang = this.currentLang === en ? ru : en;
       this.activeLang.textContent = this.currentLang === en ? 'en' : 'ru';

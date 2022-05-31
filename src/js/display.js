@@ -1,50 +1,62 @@
 class Display {
   constructor() {
-    this.container = document.createElement('textarea');
+    this.container = document.createElement('div');
     this.container.classList.add('display');
   }
 
   render() {
+    const title = document.createElement('h1');
+    this.textarea = document.createElement('textarea');
+
+    title.classList.add('display__title');
+    this.textarea.classList.add('display__textarea');
+
+    this.textarea.setAttribute('aria-label', 'textarea');
+
+    title.textContent = 'RSS Virtual Keyboard';
+
+    this.container.append(title, this.textarea);
+
     return this.container;
   }
 
   print(value) {
-    const startPos = this.container.selectionStart;
-    this.container.focus();
+    const startPos = this.textarea.selectionStart;
+    this.textarea.focus();
 
     if (value === 'backspace') {
-      if (!this.container.selectionStart) return;
-      if (this.container.selectionStart !== this.container.value.length) {
-        const chars = [...this.container.value];
+      if (!this.textarea.selectionStart) return;
+      if (this.textarea.selectionStart !== this.textarea.value.length) {
+        const chars = [...this.textarea.value];
         chars.splice(startPos - 1, 1);
 
-        this.container.value = chars.join('');
-        this.container.selectionEnd = startPos - 1;
+        this.textarea.value = chars.join('');
+        this.textarea.selectionEnd = startPos - 1;
       } else {
-        this.container.value = this.container.value.slice(
+        this.textarea.value = this.textarea.value.slice(
           0,
-          this.container.value.length - 1
+          this.textarea.value.length - 1
         );
       }
     } else if (value === 'del') {
-      if (this.container.selectionStart === this.container.value.length) return;
+      if (this.textarea.selectionStart === this.textarea.value.length) return;
 
-      this.container.value =
-        this.container.value.slice(0, this.container.selectionStart) +
-        this.container.value.slice(this.container.selectionStart + 1);
+      this.textarea.value =
+        this.textarea.value.slice(0, this.textarea.selectionStart) +
+        this.textarea.value.slice(this.textarea.selectionStart + 1);
 
-      this.container.selectionEnd = startPos;
+      this.textarea.selectionEnd = startPos;
     } else {
-      this.container.setRangeText(
+      this.textarea.setRangeText(
         value,
-        this.container.selectionStart,
-        this.container.selectionEnd
+        this.textarea.selectionStart,
+        this.textarea.selectionEnd
       );
 
-      this.container.selectionStart += 1;
+      this.textarea.selectionStart += 1;
     }
 
-    this.container.scrollTop = this.container.scrollHeight;
+    this.textarea.scrollTop = this.textarea.scrollHeight;
   }
 }
 

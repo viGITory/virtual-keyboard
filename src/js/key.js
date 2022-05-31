@@ -25,6 +25,11 @@ export default class Key {
     this.container.setAttribute('data-keycode', `${this.lang.code}`);
     this.container.classList.add(`keyboard__key--${this.lang.code}`);
 
+    if (this.lang.code === 'Space')
+      this.container.setAttribute('aria-label', 'space');
+    if (this.lang.code === 'MetaLeft')
+      this.container.setAttribute('aria-label', 'metaleft');
+
     return this.container;
   }
 

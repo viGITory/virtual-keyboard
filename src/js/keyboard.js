@@ -35,6 +35,7 @@ class Keyboard {
 
     this.langButton.setAttribute('type', 'button');
     emptyButton.setAttribute('type', 'button');
+    emptyButton.setAttribute('aria-label', 'empty');
 
     return [this.langButton, description, emptyButton];
   }

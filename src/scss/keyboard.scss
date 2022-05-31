@@ -13,6 +13,7 @@
     #505154
   );
   border-radius: 0.7rem;
+  box-shadow: 0 0 0.5rem rgba(3, 3, 5, 0.5);
 
   &__row,
   &__key {
@@ -34,11 +35,14 @@
 
     border: 0.1rem solid #030305;
     border-radius: 0.5rem;
-    box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325;
+    box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325,
+      0 0 0.2rem rgba(3, 3, 5, 0.5);
   }
 
   &__description {
     flex-grow: 1;
+
+    text-align: center;
     text-shadow: 0 0 0.5rem #d8d9dd;
   }
 
@@ -95,31 +99,36 @@
       height: auto;
 
       cursor: auto;
-      box-shadow: inset 0 0.1rem 0 0 #222325, inset 0 -0.1rem 0 0 #202123;
+      box-shadow: inset 0 0.1rem 0 0 #222325, inset 0 -0.1rem 0 0 #202123,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--Backquote,
     &--Backspace {
       background-image: linear-gradient(to bottom, #1e1f22, #1a1b1f, #161719);
-      box-shadow: inset 0 0.1rem 0 0 #262729, inset 0 -0.1rem 0 0 #202123;
+      box-shadow: inset 0 0.1rem 0 0 #262729, inset 0 -0.1rem 0 0 #202123,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--Tab,
     &--Backslash {
       background-image: linear-gradient(to bottom, #1a1b1d, #1a1b1f, #15161a);
-      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #1f2020;
+      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #1f2020,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--CapsLock,
     &--Enter {
       background-image: linear-gradient(to bottom, #1d1e22, #1a1b1f, #15161a);
-      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #212226;
+      box-shadow: inset 0 0.1rem 0 0 #27282a, inset 0 -0.1rem 0 0 #212226,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--ShiftLeft,
     &--ShiftRight {
       background-image: linear-gradient(to bottom, #1a1b1d, #191a1e, #141517);
-      box-shadow: inset 0 0.1rem 0 0 #232424, inset 0 -0.1rem 0 0 #1c1d1f;
+      box-shadow: inset 0 0.1rem 0 0 #232424, inset 0 -0.1rem 0 0 #1c1d1f,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--ControlLeft,
@@ -133,7 +142,8 @@
     &--ArrowRight,
     &--Delete {
       background-image: linear-gradient(to bottom, #17181a, #151618, #0f1012);
-      box-shadow: inset 0 0.1rem 0 0 #252628, inset 0 -0.1rem 0 0 #1a1c1b;
+      box-shadow: inset 0 0.1rem 0 0 #252628, inset 0 -0.1rem 0 0 #1a1c1b,
+        0 0 0.2rem rgba(3, 3, 5, 0.5);
     }
 
     &--Backspace,
@@ -220,10 +230,11 @@
     background-color: #d8d9dd;
     border-radius: 50%;
 
-    transition: background-color 0.1s;
+    transition: background-color 0.1s, box-shadow 0.1s;
 
     &--active {
       background-color: #00e676;
+      box-shadow: 0 0 0.5rem #00e676;
     }
   }
 }

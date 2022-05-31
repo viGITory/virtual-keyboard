@@ -1,10 +1,9 @@
 .display {
   display: block;
   width: 99rem;
-  height: 34rem;
+  height: 38.3rem;
   padding: 1rem;
   margin: 0 auto;
-  margin-bottom: 0.5rem;
 
   font-family: inherit;
   font-size: 2rem;
@@ -12,15 +11,11 @@
   color: inherit;
 
   resize: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-image: url("../assets/bg.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-blend-mode: multiply;
+  background-color: rgba(3, 3, 5, 0.5);
   border: 0;
   border-radius: 0.7rem;
   outline: none;
+  box-shadow: 0 0 0.5rem rgba(3, 3, 5, 0.5);
 
   &::-webkit-scrollbar {
     width: 0.5rem;

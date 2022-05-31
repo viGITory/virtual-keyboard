@@ -8,6 +8,11 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 100vh;
   padding: 1rem;
 
   font-family: "San Francisco Pro Display", Arial, sans-serif;
@@ -16,5 +21,8 @@ body {
   color: #d8d9dd;
   letter-spacing: 0.05rem;
 
-  background-color: #030305;
+  background-image: url("../assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

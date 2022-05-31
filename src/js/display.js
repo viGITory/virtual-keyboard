@@ -43,6 +43,8 @@ class Display {
 
       this.container.selectionStart += 1;
     }
+
+    this.container.scrollTop = this.container.scrollHeight;
   }
 }
 

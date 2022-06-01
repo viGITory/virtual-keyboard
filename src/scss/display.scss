@@ -11,6 +11,9 @@
   border-radius: 0.7rem;
   box-shadow: 0 0 0.5rem rgba(3, 3, 5, 0.5);
 
+  transition-duration: 0.1s;
+  transition-property: background-color, box-shadow;
+
   &__title,
   &__textarea {
     font-size: 2rem;
@@ -53,6 +56,8 @@
         #65666a,
         #505154
       );
+      transition-duration: 0.1s;
+      transition-property: background-image, background-color;
     }
   }
 }

@@ -20,7 +20,7 @@ class Keyboard {
     this.langButton = document.createElement('button');
     const row = document.createElement('div');
     const description = document.createElement('p');
-    const emptyButton = document.createElement('button');
+    this.themeButton = document.createElement('button');
 
     this.langButton.textContent =
       localStorage.getItem('vigitory-lang') === JSON.stringify(en)
@@ -31,13 +31,13 @@ class Keyboard {
     this.langButton.classList.add('keyboard__key', 'keyboard__key--lang');
     row.classList.add('keyboard__bar');
     description.classList.add('keyboard__description');
-    emptyButton.classList.add('keyboard__key', 'keyboard__key--empty');
+    this.themeButton.classList.add('keyboard__key', 'keyboard__key--theme');
 
     this.langButton.setAttribute('type', 'button');
-    emptyButton.setAttribute('type', 'button');
-    emptyButton.setAttribute('aria-label', 'empty');
+    this.themeButton.setAttribute('type', 'button');
+    this.themeButton.setAttribute('aria-label', 'theme');
 
-    return [this.langButton, description, emptyButton];
+    return [this.langButton, description, this.themeButton];
   }
 
   createRows() {
@@ -74,6 +74,10 @@ class Keyboard {
   addListeners() {
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('vigitory-lang', JSON.stringify(this.currentLang));
+
+      if (document.documentElement.classList.contains('light-theme'))
+        localStorage.setItem('vigitory-theme', 'light');
+      else localStorage.removeItem('vigitory-theme');
     });
 
     document.addEventListener('keydown', (event) => {
@@ -105,10 +109,18 @@ class Keyboard {
 
       this.switchCase();
     });
+
+    this.themeButton.addEventListener('click', () => {
+      document.documentElement.classList.toggle('light-theme');
+    });
   }
 
   init() {
     this.currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
+
+    if (localStorage.getItem('vigitory-theme')) {
+      document.documentElement.classList.add('light-theme');
+    }
 
     this.render();
     this.addListeners();

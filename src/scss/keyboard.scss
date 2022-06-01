@@ -15,6 +15,9 @@
   border-radius: 0.7rem;
   box-shadow: 0 0 0.5rem rgba(3, 3, 5, 0.5);
 
+  transition-duration: 0.1s;
+  transition-property: background-image, background-color, box-shadow;
+
   &__row,
   &__key {
     display: flex;
@@ -37,6 +40,10 @@
     border-radius: 0.5rem;
     box-shadow: inset 0 0.1rem 0 0 #333437, inset 0 -0.1rem 0 0 #222325,
       0 0 0.2rem rgba(3, 3, 5, 0.5);
+
+    transition-duration: 0.1s;
+    transition-property: text-shadow, border-color, box-shadow, background-image,
+      background-color;
   }
 
   &__description {
@@ -59,10 +66,8 @@
     letter-spacing: inherit;
 
     cursor: pointer;
+    background-color: transparent;
     outline: none;
-
-    transition-duration: 0.1s;
-    transition-property: text-shadow, border-color, box-shadow;
 
     svg {
       width: 1.4rem;
@@ -72,7 +77,7 @@
       fill: #d8d9dd;
 
       path {
-        transition: fill 0.2s;
+        transition: fill 0.1s;
       }
     }
 
@@ -81,8 +86,9 @@
     }
 
     &--lang,
-    &--empty {
-      background-image: linear-gradient(to bottom, #1b1c1e, #1a1b1f, #15161a);
+    &--theme {
+      border-color: #d8d9dd;
+      box-shadow: 0 0 0.5rem #d8d9dd;
     }
 
     &--lang {
@@ -91,16 +97,20 @@
       font-size: 1.4rem;
       text-shadow: 0 0 0.5rem #d8d9dd;
 
+      background-image: linear-gradient(to bottom, #1b1c1e, #1a1b1f, #15161a);
       border-color: #d8d9dd;
       box-shadow: 0 0 0.5rem #d8d9dd;
     }
 
-    &--empty {
+    &--theme {
       height: auto;
 
-      cursor: auto;
-      box-shadow: inset 0 0.1rem 0 0 #222325, inset 0 -0.1rem 0 0 #202123,
-        0 0 0.2rem rgba(3, 3, 5, 0.5);
+      cursor: pointer;
+      background-image: url("../assets/images/moon.svg"),
+        linear-gradient(to bottom, #1b1c1e, #1a1b1f, #15161a);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto 50%, auto;
     }
 
     &--Backquote,

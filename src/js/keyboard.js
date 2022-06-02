@@ -74,10 +74,6 @@ class Keyboard {
   addListeners() {
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('vigitory-lang', JSON.stringify(this.currentLang));
-
-      if (document.documentElement.classList.contains('light-theme'))
-        localStorage.setItem('vigitory-theme', 'light');
-      else localStorage.removeItem('vigitory-theme');
     });
 
     document.addEventListener('keydown', (event) => {
@@ -109,18 +105,10 @@ class Keyboard {
 
       this.switchCase();
     });
-
-    this.themeButton.addEventListener('click', () => {
-      document.documentElement.classList.toggle('light-theme');
-    });
   }
 
   init() {
     this.currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
-
-    if (localStorage.getItem('vigitory-theme')) {
-      document.documentElement.classList.add('light-theme');
-    }
 
     this.render();
     this.addListeners();

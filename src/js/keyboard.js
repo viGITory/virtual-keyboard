@@ -18,7 +18,6 @@ class Keyboard {
 
   createTopRow() {
     this.langButton = document.createElement('button');
-    const row = document.createElement('div');
     const description = document.createElement('p');
     this.themeButton = document.createElement('button');
 
@@ -29,7 +28,6 @@ class Keyboard {
     description.textContent = 'Press Ctrl + Alt to switch language';
 
     this.langButton.classList.add('keyboard__key', 'keyboard__key--lang');
-    row.classList.add('keyboard__bar');
     description.classList.add('keyboard__description');
     this.themeButton.classList.add('keyboard__key', 'keyboard__key--theme');
 

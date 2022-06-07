@@ -61,6 +61,7 @@ module.exports = ({ development }) => ({
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
+      favicon: 'src/favicon.svg',
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new CopyWebpackPlugin({

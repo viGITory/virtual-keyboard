@@ -57,8 +57,11 @@ export default class Key {
 
   addListeners() {
     document.addEventListener('keydown', (event) => {
-      event.preventDefault();
       this.print(event);
+
+      if (!/^F([1-9]|1[0-2])$/.test(event.code)) {
+        event.preventDefault();
+      }
 
       if (event.code === this.lang.code) {
         this.container.classList.add('keyboard__key--active');

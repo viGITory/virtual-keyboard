@@ -25,7 +25,8 @@ class Keyboard {
       localStorage.getItem('vigitory-lang') === JSON.stringify(en)
         ? 'en'
         : 'ru';
-    description.textContent = 'Press Ctrl + Alt to switch language';
+    description.textContent =
+      'To switch language, press Ctrl + Alt or click on en/ru button (OS Windows)';
 
     this.langButton.classList.add('keyboard__key', 'keyboard__key--lang');
     description.classList.add('keyboard__description');

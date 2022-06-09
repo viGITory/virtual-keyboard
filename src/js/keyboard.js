@@ -69,6 +69,11 @@ class Keyboard {
     });
   }
 
+  switchLang() {
+    this.currentLang = this.currentLang === en ? ru : en;
+    this.langButton.textContent = this.currentLang === en ? 'en' : 'ru';
+  }
+
   addListeners() {
     window.addEventListener('beforeunload', () => {
       if (this.currentLang === ru) localStorage.setItem('vigitory-lang', 'ru');
@@ -77,8 +82,7 @@ class Keyboard {
 
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.altKey) {
-        this.currentLang = this.currentLang === en ? ru : en;
-        this.langButton.textContent = this.currentLang === en ? 'en' : 'ru';
+        this.switchLang();
       }
 
       if (event.shiftKey || event.getModifierState('CapsLock')) {
@@ -99,9 +103,7 @@ class Keyboard {
     });
 
     this.langButton.addEventListener('click', () => {
-      this.currentLang = this.currentLang === en ? ru : en;
-      this.langButton.textContent = this.currentLang === en ? 'en' : 'ru';
-
+      this.switchLang();
       this.switchCase();
     });
   }

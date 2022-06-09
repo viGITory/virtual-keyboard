@@ -21,10 +21,9 @@ class Keyboard {
     const description = document.createElement('p');
     this.themeButton = document.createElement('button');
 
-    this.langButton.textContent =
-      localStorage.getItem('vigitory-lang') === JSON.stringify(en)
-        ? 'en'
-        : 'ru';
+    this.langButton.textContent = localStorage.getItem('vigitory-lang')
+      ? 'ru'
+      : 'en';
     description.textContent =
       'To switch language, press Ctrl + Alt or click on en/ru button (OS Windows)';
 
@@ -72,7 +71,8 @@ class Keyboard {
 
   addListeners() {
     window.addEventListener('beforeunload', () => {
-      localStorage.setItem('vigitory-lang', JSON.stringify(this.currentLang));
+      if (this.currentLang === ru) localStorage.setItem('vigitory-lang', 'ru');
+      else localStorage.removeItem('vigitory-lang');
     });
 
     document.addEventListener('keydown', (event) => {
@@ -107,7 +107,7 @@ class Keyboard {
   }
 
   init() {
-    this.currentLang = JSON.parse(localStorage.getItem('vigitory-lang')) || en;
+    this.currentLang = localStorage.getItem('vigitory-lang') ? ru : en;
 
     this.render();
     this.addListeners();

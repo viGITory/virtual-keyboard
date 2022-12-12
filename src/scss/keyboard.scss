@@ -1,0 +1,189 @@
+.keyboard {
+  width: max-content;
+  padding: 1rem;
+  margin: 0 auto;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+  box-shadow: inset 0 0.2rem 0 0 rgba(255, 255, 255, 0.1),
+    inset 0 -0.2rem 0 0 rgba(255, 255, 255, 0.1), 0 0 0.5rem rgba(0, 0, 0, 0.5);
+
+  &__row,
+  &__key {
+    display: flex;
+  }
+
+  &__row {
+    gap: 0.5rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__key,
+  &__description {
+    padding: 1rem;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0.1rem 0 0 rgba(255, 255, 255, 0.1),
+      inset 0 -0.1rem 0 0 rgba(255, 255, 255, 0.1),
+      0 0 0.2rem rgba(0, 0, 0, 0.5);
+
+    transition-duration: 0.1s;
+    transition-property: text-shadow, box-shadow, background-color;
+  }
+
+  &__description {
+    flex-grow: 1;
+
+    text-align: center;
+    text-shadow: 0 0 0.5rem #fff;
+  }
+
+  &__key {
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+
+    cursor: pointer;
+    border: 0;
+    outline: none;
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+
+      pointer-events: none;
+      fill: #fff;
+    }
+
+    &::selection {
+      background-color: transparent;
+    }
+
+    &--lang,
+    &--theme {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 0.1rem 0 0 rgba(255, 255, 255, 0.1),
+        inset 0 -0.1rem 0 0 rgba(255, 255, 255, 0.1), 0 0 0.2rem #fff;
+    }
+
+    &--lang {
+      height: max-content;
+
+      font-size: 1.4rem;
+      text-shadow: 0 0 0.5rem #fff;
+    }
+
+    &--theme {
+      height: auto;
+
+      background-image: url("../assets/images/sun.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto 50%;
+    }
+
+    &--Backspace,
+    &--ShiftRight,
+    &--ShiftLeft {
+      width: 12.5rem;
+    }
+
+    &--Tab {
+      width: 8.5rem;
+    }
+
+    &--Backslash {
+      width: 10rem;
+    }
+
+    &--CapsLock {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 10.5rem;
+    }
+
+    &--ControlLeft,
+    &--ControlRight {
+      width: 7rem;
+    }
+
+    &--Enter {
+      width: 14.5rem;
+    }
+
+    &--Space {
+      flex-grow: 1;
+    }
+
+    &--Tab,
+    &--ShiftLeft,
+    &--ControlLeft {
+      justify-content: flex-start;
+    }
+
+    &--Backspace,
+    &--Enter,
+    &--ShiftRight,
+    &--ControlRight {
+      justify-content: flex-end;
+    }
+
+    &--CapsLock,
+    &--ArrowUp,
+    &--ArrowLeft,
+    &--ArrowDown,
+    &--ArrowRight {
+      font-size: 1.4rem;
+    }
+
+    &--Tab,
+    &--Backspace,
+    &--Enter,
+    &--ShiftLeft,
+    &--ShiftRight,
+    &--ControlLeft,
+    &--MetaLeft,
+    &--AltLeft,
+    &--AltRight,
+    &--ControlRight,
+    &--Delete {
+      align-items: flex-end;
+      font-size: 1.4rem;
+    }
+
+    &--active {
+      text-shadow: 0 0 0.5rem #fff;
+
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 0.1rem 0 0 rgba(255, 255, 255, 0.1),
+        inset 0 -0.1rem 0 0 rgba(255, 255, 255, 0.1), 0 0 0.2rem #fff;
+    }
+  }
+
+  &__indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+
+    transition: background-color 0.1s, box-shadow 0.1s;
+
+    &--active {
+      background-color: #00e676;
+      box-shadow: 0 0 0.5rem #00e676;
+    }
+  }
+}

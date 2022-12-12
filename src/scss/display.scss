@@ -1,0 +1,51 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 99rem;
+  height: 38.3rem;
+  padding: 1rem;
+  margin: 0 auto;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+  box-shadow: inset 0 0.2rem 0 0 rgba(255, 255, 255, 0.1),
+    inset 0 -0.2rem 0 0 rgba(255, 255, 255, 0.1), 0 0 0.5rem rgba(0, 0, 0, 0.5);
+
+  &__title,
+  &__textarea {
+    font-size: 2rem;
+    font-weight: inherit;
+  }
+
+  &__title {
+    text-align: center;
+    text-shadow: 0 0 0.5rem #fff;
+  }
+
+  &__textarea {
+    display: block;
+    height: 100%;
+    padding: 0;
+
+    font-family: inherit;
+    color: inherit;
+
+    resize: none;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
